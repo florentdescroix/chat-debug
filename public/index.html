@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <title>Chat</title>
+</head>
+
+<body>
+    <aside class="card">
+        <header>Discussions</header>
+        <main id="rooms"></main>
+        <footer class="actions">
+            <button onclick="newRoom()">
+                Nouvelle discussion
+            </button>
+        </footer>
+    </aside>
+
+    <main class="card">
+        <header id="currentName"></header>
+        <main id="currentRoom"></main>
+        <footer class="input-area">
+            <textarea id="input" class="text-msg" onkeypress="keypress(event)" oninput="resizeTextarea(this)"
+                placeholder="Aa"></textarea>
+            <button id="sendBtn" class="icon" onclick="send()">➤</button>
+        </footer>
+    </main>
+
+    <aside id="right" class="card">
+        <header>Notifications</header>
+        <main id="notifications"></main>
+    </aside>
+
+    <template id="room">
+        <label class="room">
+            <input id="selector" type="radio" name="room" onchange="changeRoom(event)" />
+            <div id="name"></div>
+            <button title="Lister les participant·e·s" id="getUsers" class="icon">...</button>
+            <div id="users"></div>
+        </label>
+    </template>
+
+    <template id="message">
+        <div class="message">
+            <div id="author"></div>
+            <div id="date"></div>
+            <object id="avatar" data="" type="image/jpeg">
+                <img src="/assets/images/avatar.svg" alt="Name" />
+            </object>
+            <div id="text" class="text-msg"></div>
+        </div>
+    </template>
+
+    <script src="/assets/app.js"></script>
+</body>
+
+</html>

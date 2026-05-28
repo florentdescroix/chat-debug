@@ -1,0 +1,218 @@
+/***********************/
+/*****  VARIABLES  *****/
+/***********************/
+:root {
+    --primary-color: 100, 149, 237;
+}
+
+/**********************/
+/*****    BASE    *****/
+/**********************/
+html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/**********************/
+/*****   LAYOUT   *****/
+/**********************/
+body {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 16px;
+    padding: 16px;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    background: rgba(0, 0, 0, 10%);
+
+    >aside,
+    >main {
+        display: grid;
+        grid-template-rows: max-content 1fr max-content;
+        overflow: hidden;
+
+        >header,
+        >main,
+        >footer {
+            padding: 16px;
+        }
+
+        >header {
+            box-shadow: 0px 0px 4px rgba(0, 0, 0, 10%);
+            padding: 16px;
+            font-size: 24px;
+            line-height: 32px;
+            text-transform: capitalize;
+        }
+
+        >main {
+            overflow-y: scroll;
+        }
+    }
+}
+
+/**********************/
+/***** COMPONENTS *****/
+/**********************/
+button {
+    color: white;
+    background: rgb(var(--primary-color));
+    padding: 8px 16px;
+    line-height: 1em;
+    border-radius: 200px;
+    border: none;
+    cursor: pointer;
+
+    &.icon {
+        font-size: 32px;
+        color: rgb(var(--primary-color));
+        background: transparent;
+        padding: 0;
+    }
+}
+
+.card {
+    border-radius: 16px;
+    background: white;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 10%);
+}
+
+.input-area {
+    display: grid;
+    grid-template-columns: 1fr 48px;
+    padding: 16px;
+
+    >textarea {
+        line-height: 1.2em;
+        min-height: 35px;
+        height: 35px;
+        width: 100%;
+    }
+}
+
+.actions {
+    >button {
+        width: 100%;
+    }
+}
+
+
+
+.text-msg {
+    font-family: inherit;
+    padding: 8px 16px;
+    border-radius: 16px;
+    resize: none;
+    background: rgba(0, 0, 0, 10%);
+    border: none;
+}
+
+.message {
+    display: grid;
+    grid-template-areas: "null author date" "avatar text text";
+    grid-template-columns: min-content 1fr;
+    grid-template-rows: min-content 1fr;
+    align-items: center;
+    gap: 4px;
+    width: max-content;
+    min-width: 250px;
+    clear: both;
+    margin-bottom: 16px;
+
+    #author {
+        grid-area: author;
+        color: rgba(0, 0, 0, 50%);
+        font-size: .8em;
+        padding-left: 16px;
+    }
+
+    #date {
+        grid-area: date;
+        color: rgba(0, 0, 0, 25%);
+        font-size: .8em;
+        white-space: nowrap;
+    }
+
+    #avatar {
+        grid-area: avatar;
+        width: 28px;
+        height: 28px;
+        border-radius: 100%;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    #text {
+        grid-area: text;
+        border-radius: 16px;
+        background: rgba(0, 0, 0, 10%);
+    }
+
+    &.mine {
+        grid-template-areas: "date author null" "text text avatar";
+        float: right;
+
+        #author {
+            display: none;
+        }
+
+        #text {
+            background: rgb(var(--primary-color));
+            color: white;
+        }
+    }
+
+    &.info {
+        grid-template-areas: "date date date" "text text text";
+        gap: 0;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 8px;
+
+        #author,
+        #avatar {
+            display: none;
+        }
+
+        #text {
+            padding: 0;
+            background: transparent;
+        }
+    }
+}
+
+.room {
+    display: block;
+    width: 100%;
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+
+    #name {
+        font-size: 1.2em;
+        text-transform: capitalize;
+    }
+
+    #users {
+        color: rgba(0, 0, 0, 50%);
+    }
+
+    input {
+        display: none;
+    }
+
+    &:hover,
+    &:has(input:checked) {
+        background: rgba(0, 0, 0, 5%);
+    }
+}

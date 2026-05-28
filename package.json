@@ -1,0 +1,17 @@
+{
+  "name": "chat-debug",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch ./index.js",
+    "serve": "node ./index.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2",
+    "socket.io": "^4.7.5"
+  }
+}
